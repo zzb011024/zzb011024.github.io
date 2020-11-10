@@ -28,4 +28,13 @@
     <url>/2020/11/09/postName/</url>
     <content><![CDATA[]]></content>
   </entry>
+  <entry>
+    <title>blog image</title>
+    <url>/2020/11/10/blog-image/</url>
+    <content><![CDATA[<p>add background image in <u>blog/themes//butterfly</u>,behind <strong>default_top_img</strong>,</p>
+<p>add cover in <u>blog/themes//butterfly</u>,behind <strong>default_cover</strong></p>
+<p>add guide to in <u>blog/themes//butterfly</u>,search “ menu: “,and delete “# “before  Home or Archives or Tags or Categories … And,you need to create a new page for each one ,</p>
+<p>So use hexo new page  “Tags “,and the like</p>
+]]></content>
+  </entry>
 </search>
