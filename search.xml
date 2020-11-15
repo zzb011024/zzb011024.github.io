@@ -37,4 +37,68 @@
     <url>/2020/11/09/postName/</url>
     <content><![CDATA[]]></content>
   </entry>
+  <entry>
+    <title>web</title>
+    <url>/2020/11/10/web/</url>
+    <content><![CDATA[<p>渗透准备：</p>
+<p>​    1 信息搜集（子域名，端口，waf，应用，whois…）</p>
+<p>渗透阶段：</p>
+<p>​    1 web脚本攻击（Poc/ExP，sqli，xss，csrf…）</p>
+<p>​    2 网络设备攻击（路由器…）</p>
+<p>​    3 社会工程学</p>
+<p>后渗透阶段</p>
+<p>​    1 内网渗透扩大战果</p>
+<p>​    2 提升权限</p>
+<p>​    3 后门（rootkit，木马…)</p>
+<p>​                Nnap端口扫描</p>
+<p>攻击阶段：</p>
+<p>​    SQL注入：</p>
+<p>​        盲注</p>
+<p>​        报错注入</p>
+<p>​        基于时间的注入</p>
+<p>​        宽字节注入</p>
+<p>​        二次注入</p>
+<p>​        sqlmap    <a href="https://github.com/sqlmapproject/sqlmap">https://github.com/sqlmapproject/sqlmap</a></p>
+<p>XSS:</p>
+<p>​    打组合拳（CSRF ，SQL1，各种bypass）</p>
+<p><img src="C:\Users\17840\AppData\Roaming\Typora\typora-user-images\image-20201110133509117.png" alt="image-20201110133509117"></p>
+<p><img src="C:\Users\17840\AppData\Roaming\Typora\typora-user-images\image-20201110133744234.png" alt="image-20201110133744234"></p>
+<p>trick</p>
+<ul>
+<li>注释中藏flag，flag文字信息是背景色</li>
+<li>http header</li>
+<li>console</li>
+<li>cookie</li>
+</ul>
+<p>is_numberic</p>
+<p>封装协议（伪协议）</p>
+<p>PHP  访问各个输入/输出流，将一个文件包含进化成一个getshell</p>
+<p>phpinfo会被禁</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>web</title>
+    <url>/2020/11/12/web-1/</url>
+    <content><![CDATA[<p>如果网站存在备份文件，在地址栏最末加上/index.php~或/index.php.bak，即可得到备份文件</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>“sql”</title>
+    <url>/2020/11/10/%E2%80%9Csql%E2%80%9D/</url>
+    <content><![CDATA[<p>1’ and ‘1’=’1</p>
+<p>​                    2</p>
+<p>没有任何结果sql注入点</p>
+<p>1‘ order by 字段长#  （查询字段长）</p>
+<p>1’ union select 1.2#  (存在回显位，返回回显位置)</p>
+<p>1’ union select  user().database()#\</p>
+<p>1’ union select h.group_concat(table_name)from information_schema. table where tables wh</p>
+<p>1.判断是否存在注入，注入是字符型还是数字型<br>2.猜解SQL查询语句中的字段数<br>3.确定显示的字段顺序<br>4.获取当前数据库<br>5.获取数据库中的表<br>6.获取表中的字段名<br>7.下载数据</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>多边形面积</title>
+    <url>/2020/11/15/%E5%A4%9A%E8%BE%B9%E5%BD%A2%E9%9D%A2%E7%A7%AF/</url>
+    <content><![CDATA[<p>在知道多边形每个点坐标的情况下可以使用该公式<br>$$<br>s=1/2|(x_1y_2-x_2y_1)+(x_2y_3-x_3y_2+…+(x_iy_{i+1}-x_{i+1}y_i)+(x_{i+1}y{i+2}-x_{i+2}y_{i+1})+(x_ny_1-x_1y_n))|<br>$$<br>内含叉乘尚未了结</p>
+]]></content>
+  </entry>
 </search>
