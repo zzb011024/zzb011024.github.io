@@ -101,4 +101,14 @@
     <content><![CDATA[<p>在知道多边形每个点坐标的情况下可以使用该公式<br>$$<br>s=1/2|(x_1y_2-x_2y_1)+(x_2y_3-x_3y_2+…+(x_iy_{i+1}-x_{i+1}y_i)+(x_{i+1}y{i+2}-x_{i+2}y_{i+1})+(x_ny_1-x_1y_n))|<br>$$<br>内含叉乘尚未了结</p>
 ]]></content>
   </entry>
+  <entry>
+    <title>扣工资</title>
+    <url>/2020/11/17/%E6%89%A3%E5%B7%A5%E8%B5%84/</url>
+    <content><![CDATA[<p>给小明发基本工资和奖金，但是每迟到一次就扣50 元，我觉得挺详细了，要是看不懂我的水平是救不了了</p>
+<p><code>#include&lt;bits/stdc++.h&gt;</code><br><code>//万能文件头</code><br><code>using namespace std;</code><br><code>//百度百科了但是没看懂</code><br><code>int main()</code></p>
+<p><code>&#123;</code><br>    <code>//定义变量bp即为基本工资，bo为奖金，N为迟到次数</code><br>    <code>int bp,bo,N;</code><br>    <code>//有输入则循环</code><br>    <code>while(!cin.eof())&#123;</code><br>        <code>//cin读取键盘输入分别给bp bo n</code><br>        <code>cin &gt;&gt;bp&gt;&gt;bo&gt;&gt;N;</code><br>        <code>//输出上面的输入，只是增加了显示后页面地直观性</code><br>        <code>cout &lt;&lt;&quot;基本工资：&quot;&lt;&lt;bp&lt;&lt;&quot; &quot;&lt;&lt;&quot;奖金：&quot;&lt;&lt;bo&lt;&lt;&quot; &quot;&lt;&lt;&quot;迟到次数：&quot;&lt;&lt;N&lt;&lt;&quot; &quot;&lt;&lt;endl;</code><br>        <code>//判断输入是否符合要求 “||”是或的意思</code><br>        <code>if(bp&lt;0||bo&lt;0||N&lt;0)&#123;</code><br>            <code>//输出，endl是换行</code><br>            <code>cout &lt;&lt;&quot;error&quot;&lt;&lt;endl;</code><br>        <code>&#125;else&#123;</code><br>            <code>//输出</code><br>            <code>cout &lt;&lt; &quot;可领：&quot;&lt;&lt;bp+bo-N*50&lt;&lt;endl;</code><br>        <code>&#125;</code><br>    <code>&#125;</code><br>``    </p>
+<pre><code>return 0;</code></pre>
+<p><code>&#125;</code></p>
+]]></content>
+  </entry>
 </search>
