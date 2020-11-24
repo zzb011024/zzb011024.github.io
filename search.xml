@@ -28,16 +28,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>pageabout</title>
-    <url>/2020/11/09/pageabout/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>postName</title>
-    <url>/2020/11/09/postName/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>web</title>
     <url>/2020/11/10/web/</url>
     <content><![CDATA[<p>渗透准备：</p>
@@ -109,6 +99,14 @@
 <p><code>&#123;</code><br>    <code>//定义变量bp即为基本工资，bo为奖金，N为迟到次数</code><br>    <code>int bp,bo,N;</code><br>    <code>//有输入则循环</code><br>    <code>while(!cin.eof())&#123;</code><br>        <code>//cin读取键盘输入分别给bp bo n</code><br>        <code>cin &gt;&gt;bp&gt;&gt;bo&gt;&gt;N;</code><br>        <code>//输出上面的输入，只是增加了显示后页面地直观性</code><br>        <code>cout &lt;&lt;&quot;基本工资：&quot;&lt;&lt;bp&lt;&lt;&quot; &quot;&lt;&lt;&quot;奖金：&quot;&lt;&lt;bo&lt;&lt;&quot; &quot;&lt;&lt;&quot;迟到次数：&quot;&lt;&lt;N&lt;&lt;&quot; &quot;&lt;&lt;endl;</code><br>        <code>//判断输入是否符合要求 “||”是或的意思</code><br>        <code>if(bp&lt;0||bo&lt;0||N&lt;0)&#123;</code><br>            <code>//输出，endl是换行</code><br>            <code>cout &lt;&lt;&quot;error&quot;&lt;&lt;endl;</code><br>        <code>&#125;else&#123;</code><br>            <code>//输出</code><br>            <code>cout &lt;&lt; &quot;可领：&quot;&lt;&lt;bp+bo-N*50&lt;&lt;endl;</code><br>        <code>&#125;</code><br>    <code>&#125;</code><br>``    </p>
 <pre><code>return 0;</code></pre>
 <p><code>&#125;</code></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>“高阶导数”</title>
+    <url>/2020/11/19/%E2%80%9C%E9%AB%98%E9%98%B6%E5%AF%BC%E6%95%B0%E2%80%9D/</url>
+    <content><![CDATA[<p>没好好学习高数结果连个高阶导数都不会</p>
+<p>方法一：递归，找规律，一般是有手就行</p>
+<p>方法二：要记两个莱布尼茨公式</p>
 ]]></content>
   </entry>
 </search>
