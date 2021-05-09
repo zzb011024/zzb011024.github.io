@@ -130,4 +130,20 @@
 <p><code>&#125;</code></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>EBCDIC</title>
+    <url>/2021/05/09/EBCDIC/</url>
+    <content><![CDATA[<p>​        解压出一个EBCDIC.txt</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">啌亣捆咇凁攨mｐm檯剤仯蝠蝰?</span><br></pre></td></tr></table></figure>
+
+<p>看不懂，只觉得是乱码</p>
+<p>百度了名字EBCDIC，是一种字符集编码，类似ASCII</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import io</span><br><span class="line">import codecs</span><br><span class="line">with io.open(&quot;EBCDIC.txt&quot;,&#39;r&#39;,encoding&#x3D;&#39;cp500&#39;) as fr:</span><br><span class="line">	for line in fr:</span><br><span class="line">		print(line)</span><br></pre></td></tr></table></figure>
+
+<p>encoding在python2.7不被使用，故需导入io包</p>
+]]></content>
+      <tags>
+        <tag>2021红帽杯</tag>
+      </tags>
+  </entry>
 </search>
