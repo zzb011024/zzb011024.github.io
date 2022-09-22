@@ -171,7 +171,7 @@
   <entry>
     <title>文件包含</title>
     <url>/2022/09/21/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</url>
-    <content><![CDATA[<h2 id="BSidesCTF-2020-Had-a-bad-day"><a href="#BSidesCTF-2020-Had-a-bad-day" class="headerlink" title="[BSidesCTF 2020]Had a bad day"></a>[BSidesCTF 2020]Had a bad day</h2><p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921185646691.png" alt="image-20220921185646691"></p>
+    <content><![CDATA[<h2 id="BSidesCTF-2020-Had-a-bad-day"><a href="#BSidesCTF-2020-Had-a-bad-day" class="headerlink" title="[BSidesCTF 2020]Had a bad day"></a>[BSidesCTF 2020]Had a bad day</h2><p><img src="image-20220921185646691.png" alt="image-20220921185646691"></p>
 <p>使用php伪协议读取源码，发现被添加了一个.php</p>
 <p>本来以伪用截断添加%00后要解决路径问题</p>
 <p>但是不加php就出来base64了</p>
@@ -187,23 +187,23 @@
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line">&lt;!-- Can you read this flag? --&gt;</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"> <span class="comment">// flag&#123;5fb62336-06ec-4ac6-9015-89adf32da936&#125;</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h2 id="ACTF2020-新生赛-Include"><a href="#ACTF2020-新生赛-Include" class="headerlink" title="[ACTF2020 新生赛]Include"></a>[ACTF2020 新生赛]Include</h2><p>伪协议</p>
-<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921195808239.png" alt="image-20220921195808239"></p>
-<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921195824894.png" alt="image-20220921195824894"></p>
+<p><img src="image-20220921195808239.png" alt="image-20220921195808239"></p>
+<p><img src="image-20220921195824894.png" alt="image-20220921195824894"></p>
 <h2 id="极客大挑战-2019-Secret-File"><a href="#极客大挑战-2019-Secret-File" class="headerlink" title="[极客大挑战 2019]Secret File"></a>[极客大挑战 2019]Secret File</h2><p>控制台找到一个跳转链接点击跳转</p>
-<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921203326139.png" alt="image-20220921203326139"></p>
-<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921203422321.png" alt="image-20220921203422321"></p>
-<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921203606516.png" alt="image-20220921203606516"></p>
-<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921203457987.png" alt="image-20220921203457987"></p>
+<p><img src="image-20220921203326139.png" alt="image-20220921203326139"></p>
+<p><img src="image-20220921203422321.png" alt="image-20220921203422321"></p>
+<p><img src="image-20220921203606516.png" alt="image-20220921203606516"></p>
+<p><img src="image-20220921203457987.png" alt="image-20220921203457987"></p>
 <p>中间访问的action.php抓包得到</p>
-<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921202047426.png" alt="image-20220921202047426"></p>
-<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921202140213.png" alt="image-20220921202140213"></p>
+<p><img src="image-20220921202047426.png" alt="image-20220921202047426"></p>
+<p><img src="image-20220921202140213.png" alt="image-20220921202140213"></p>
 <p>stristr(str1,str2)查找str2在str1中第一次出现，并返回剩余部分</p>
 <p>strstr一样但是大小写敏感</p>
 <p>访问</p>
-<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921202747248.png" alt="image-20220921202747248"></p>
+<p><img src="image-20220921202747248.png" alt="image-20220921202747248"></p>
 <p>伪协议读文件</p>
-<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921203216906.png" alt="image-20220921203216906"></p>
-<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921203231337.png" alt="image-20220921203231337"></p>
+<p><img src="image-20220921203216906.png" alt="image-20220921203216906"></p>
+<p><img src="image-20220921203231337.png" alt="image-20220921203231337"></p>
 ]]></content>
   </entry>
   <entry>
